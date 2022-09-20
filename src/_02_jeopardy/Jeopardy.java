@@ -102,7 +102,7 @@ frame.add(quizPanel);
            buttonCount ++;
 		// Return your new button instead of the temporary button
 
-		return new JButton("temporary button");
+		return button;
 	}
 
 	@Override
@@ -113,7 +113,9 @@ frame.add(quizPanel);
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-
+if(buttonPressed.equals(firstButton)) {
+	askQuestion("About how many fruits are there?" , "2000" , 300);
+}
 			// Call the askQuestion() method
  
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
@@ -129,14 +131,25 @@ frame.add(quizPanel);
 	private void askQuestion(String question, String correctAnswer, int prizeMoney) {
 		
 		// Use the playJeopardyTheme() method to play music while the use thinks of an answer
-		
+		playJeopardyTheme();
 		// Remove this temporary message and replace it with a pop-up that asks the user the question
-		JOptionPane.showMessageDialog(null, "this is where the question will be asked");
+		String input=JOptionPane.showInputDialog(null, question);
 		
 		// Stop the theme music when they have entered their response.
-		
+		stopJeopardyTheme();
 		// If the answer is correct
-
+        if(input.equals(correctAnswer)) {
+        	score+=prizeMoney;
+        	
+        	JOptionPane.showMessageDialog(null, "You were correct!" );
+        }
+        
+        else {
+        	score-=prizeMoney;
+        	JOptionPane.showMessageDialog(null, "You were wrong! The correct answer is " + correctAnswer );
+        }
+        
+        updateScore();
 			// Increase the score by the prizeMoney
 
 			// Pop up a message to tell the user they were correct
