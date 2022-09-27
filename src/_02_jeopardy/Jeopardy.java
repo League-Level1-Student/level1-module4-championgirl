@@ -33,7 +33,8 @@ import game_tools.Sound;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
+	private JButton thirdButton, fourthButton; 
+	JButton fifthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
@@ -60,21 +61,40 @@ public class Jeopardy implements ActionListener {
 		// 5. Add the quizPanel to the frame
 frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
-                 firstButton=createButton("100");
+                 firstButton=createButton("200");
+                 secondButton=createButton("400");
+                 thirdButton=createButton("600");
+                 fourthButton=createButton("800");
+                 fifthButton=createButton("1000");
 		// 7. Add the firstButton to the quizPanel
                quizPanel.add(firstButton);
+               quizPanel.add(secondButton);
+               quizPanel.add(thirdButton);
+               quizPanel.add(fourthButton);
+               quizPanel.add(fifthButton);
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
                
 		// 9. Use the secondButton variable to hold a button using the createButton
 		// method
+               
+           
+               
+               
 
 		// 10. Add the secondButton to the quizPanel
 
+               
+               
 		// 11. Add action listeners to the buttons (2 lines of code)
-
+                    
+                    firstButton.addActionListener(this);
+                    secondButton.addActionListener(this);
+                    thirdButton.addActionListener(this);
+                    fourthButton.addActionListener(this);
+                    fifthButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
-
+                  
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 		
 		 /*
@@ -98,6 +118,7 @@ frame.add(quizPanel);
 
 		// Set the text of the button to the dollarAmount
             button.setText(dollarAmount);
+            
 		// Increment the buttonCount (this should make the layout vertical)
            buttonCount ++;
 		// Return your new button instead of the temporary button
@@ -113,9 +134,28 @@ frame.add(quizPanel);
 
 		JButton buttonPressed = (JButton) e.getSource();
 		// If the buttonPressed was the firstButton
-if(buttonPressed.equals(firstButton)) {
-	askQuestion("About how many fruits are there?" , "2000" , 300);
+if(buttonPressed.equals(firstButton)&&!buttonPressed.getText().equals("")) {
+	askQuestion("About how many fruits are there?" , "2000" , 200);
 }
+
+
+if(buttonPressed.equals(secondButton)&&!buttonPressed.getText().equals("")) {
+	askQuestion("Who was the 25th United States president?" , "William McKinley" , 400);
+}
+
+if(buttonPressed.equals(thirdButton)&&!buttonPressed.getText().equals("")) {
+	askQuestion("What does “www” stand for in a website browser?" , "World Wide Web" , 600);
+}
+
+if(buttonPressed.equals(fourthButton)&&!buttonPressed.getText().equals("")) {
+	askQuestion("How long is an Olympic swimming pool (in meters)?" , "50 meters" , 800);
+}
+
+if(buttonPressed.equals(fifthButton)&&!buttonPressed.getText().equals("")) {
+	askQuestion("Who named the Pacific Ocean?" , "Ferdinand Magellan" , 1000);
+}
+
+buttonPressed.setText("");
 			// Call the askQuestion() method
  
 		// Complete the code in the askQuestion() method. When you play the game, the score should change.
