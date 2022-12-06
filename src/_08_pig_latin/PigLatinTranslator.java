@@ -8,6 +8,8 @@ public class PigLatinTranslator {
      *            The sentence in English
      * @return The pig latin version
      */
+	
+	
     public static String translateEnglishToPigLatin(String s) {
         String latin = "";
         int i = 0;
